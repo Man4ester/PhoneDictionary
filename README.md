@@ -20,4 +20,4 @@ CONVENTIONS:
   *   if a modification 
     * adding new functionality, the branch should starts with 'feature/#number ticket + ticket title';
     * fixing old functionality, the branch should starts with 'bugfix/#number ticket + ticket title';
-  * all commits should contains shot description
+  * all commits should contains shot description starts with number of the ticket;
