@@ -4,3 +4,6 @@
 .settings
 .classpath
 bin/*
+/build/*
+/phone/build/*
+/phone-interfaces/build/*
