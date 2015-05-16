@@ -1,9 +1,10 @@
 apply plugin: 'eclipse'
 apply plugin: 'java'
-apply plugin: 'maven'
 
-group = 'com.roga'
-version = '0.0.1'
+jar {
+	baseName = 'phone'
+	version = '0.0.1'
+}
 
 
 repositories {
