@@ -5,6 +5,9 @@ apply plugin: 'maven'
 group = 'com.roga'
 version = '0.0.1'
 
+jar {
+	baseName='phone-interfaces'
+}
 
 repositories {
 	mavenLocal()
