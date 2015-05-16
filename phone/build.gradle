@@ -5,6 +5,9 @@ apply plugin: 'maven'
 group = 'com.roga'
 version = '0.0.1'
 
+jar {
+	baseName='phone'
+}
 
 repositories {
 	mavenLocal()
@@ -12,7 +15,9 @@ repositories {
 }
 
 dependencies {
-	compile ("org.springframework:spring-web:4.0.3.RELEASE")
+	compile("org.springframework:spring-web:4.0.3.RELEASE")
+	runtime project(":phone-interfaces")
 }
+
 
 

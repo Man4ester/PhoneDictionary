@@ -1,0 +1,4 @@
+include 'phone', 'phone-interfaces'
+
+project(':phone').name='phone'
+project(':phone-interfaces').name='phone-interfaces'
