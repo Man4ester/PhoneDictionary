@@ -2,7 +2,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'maven'
 
-group = 'com.roga'
+group = 'com.hmel'
 version = '0.0.1'
 
 
@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
 	compile ("org.springframework:spring-web:4.0.3.RELEASE")
+	runtime ("org.hibernate:hibernate-core:4.3.10.Final")
 }
 
 
