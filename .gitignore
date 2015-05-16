@@ -1,0 +1,11 @@
+.git
+.gradle
+.project
+.settings
+.classpath
+bin/*
+<<<<<<< HEAD
+=======
+/build/
+>>>>>>> 3d4a82494ae58f842cdfaf5bcc0f275b2a6433c8
+/bin/
