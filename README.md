@@ -22,3 +22,4 @@ CONVENTIONS:
     * fixing old functionality, the branch should starts with 'bugfix/#number ticket + ticket title';
   * all commits should contains shot description;
   * all titles should starts with number of the ticket;
+  * author of the request doesn't have permissions to merge his modifications;
