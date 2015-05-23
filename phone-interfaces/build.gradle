@@ -16,6 +16,8 @@ repositories {
 
 dependencies {
 	compile ("org.springframework:spring-web:4.0.3.RELEASE")	
+	runtime ("org.hibernate:hibernate-core:4.3.10.Final")
+	compile("mysql:mysql-connector-java:5.1.16")
 }
 
 
