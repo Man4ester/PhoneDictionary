@@ -1,5 +1,6 @@
 package com.hmel.central.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 public class Client {
   
   @Id
+  @Column(name="id")
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private int id;
   

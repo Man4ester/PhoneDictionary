@@ -15,8 +15,10 @@ repositories {
 }
 
 dependencies {
-	compile ("org.springframework:spring-web:4.0.3.RELEASE")
+	compile ("org.springframework:spring-web:4.1.6.RELEASE")
+	compile ("org.springframework:spring-orm:4.1.6.RELEASE")
 	runtime ("org.hibernate:hibernate-core:4.3.10.Final")
+	compile ('commons-dbcp:commons-dbcp:1.4')
 	compile("mysql:mysql-connector-java:5.1.16")
 	compile project (":phone-interfaces")
 }
