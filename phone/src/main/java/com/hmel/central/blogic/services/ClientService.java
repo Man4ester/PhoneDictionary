@@ -56,6 +56,7 @@ public class ClientService implements IClientService {
     return cl;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public List<Client> findAll() throws PhoneDictionaryException {
     String sql = "SELECT c FROM Client c";
