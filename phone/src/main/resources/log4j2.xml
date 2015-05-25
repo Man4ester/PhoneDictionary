@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
 	<Appenders>
+	<!-- for writing in file -->
 		<File name="File1" fileName="output.log" bufferedIO="false"
 			advertiseURI="file:output.log" advertise="true">
 		</File>
