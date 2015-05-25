@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `phones`;
 
 CREATE TABLE `phones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `phoneType` enum('HOME','WORK') DEFAULT NULL,
   `clientID` int(11) NOT NULL,
   `creationTime` datetime DEFAULT NULL,

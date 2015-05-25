@@ -19,6 +19,8 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<mapping class="com.hmel.central.models.Client" />
+		<mapping class="com.hmel.central.models.Phones" />
+		<mapping class="com.hmel.central.models.Addresses" />
 
 
 

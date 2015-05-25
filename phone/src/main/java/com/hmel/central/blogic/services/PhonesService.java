@@ -7,61 +7,59 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.stereotype.Service;
 
-import com.hmel.central.blogic.interfaces.IClientService;
-import com.hmel.central.models.Client;
+import com.hmel.central.blogic.interfaces.IPhonesService;
+import com.hmel.central.models.Phones;
 import com.hmel.central.utils.HibernateUtils;
 import com.hmel.exception.PhoneDictionaryException;
 
-@Service
-public class ClientService implements IClientService {
+public class PhonesService implements IPhonesService {
 
   private SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
 
   @Override
-  public Client saveUpdate(Client client) throws PhoneDictionaryException {
-    if (client == null) {
-      throw new IllegalArgumentException("Client can't be NULL for saving");
+  public Phones saveUpdate(Phones phones) throws PhoneDictionaryException {
+    if (phones == null) {
+      throw new IllegalArgumentException("Phones can't be NULL for saving");
     }
     getSession().beginTransaction();
     try {
-      if (client.getId() == 0) {
-        getSession().persist(client);
+      if (phones.getId() == 0) {
+        getSession().persist(phones);
       } else {
-        getSession().merge(client);
+        getSession().merge(phones);
       }
       getSession().getTransaction().commit();
     } finally {
       getSession().close();
     }
-    return client;
+    return phones;
   }
 
   @Override
-  public Client findByID(int id) throws PhoneDictionaryException {
+  public Phones findByID(int id) throws PhoneDictionaryException {
     if (id == 0) {
       throw new IllegalArgumentException("ID can't be 0");
     }
-    Client cl = null;
+    Phones phones = null;
     getSession().beginTransaction();
     try {
-      cl = (Client) getSession().get(Client.class, id);
+      phones = (Phones) getSession().get(Phones.class, id);
     } finally {
       getSession().close();
     }
-    if (cl == null) {
-      throw new NullPointerException("No client with Id: " + id);
+    if (phones == null) {
+      throw new NullPointerException("No phones with Id: " + id);
     }
-    return cl;
+    return phones;
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<Client> findAll() throws PhoneDictionaryException {
-    String sql = "SELECT c FROM Client c";
+  public List<Phones> findAll() throws PhoneDictionaryException {
+    String sql = "SELECT p FROM Phones p";
     getSession().beginTransaction();
-    List<Client> res = new ArrayList<Client>();
+    List<Phones> res = new ArrayList<Phones>();
     try {
       Query query = getSession().createQuery(sql);
       res = query.list();
@@ -72,7 +70,7 @@ public class ClientService implements IClientService {
   }
 
   @Override
-  public List<Client> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult)
+  public List<Phones> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult)
       throws PhoneDictionaryException {
     if (criteria == null) {
       throw new IllegalArgumentException("criteria can't be null");
@@ -85,10 +83,10 @@ public class ClientService implements IClientService {
       throw new IllegalArgumentException("maxResults can't be < 0");
     }
     getSession().beginTransaction();
-    List<Client> res = new ArrayList<Client>();
+    List<Phones> res = new ArrayList<Phones>();
     try {
       res =
-          (List<Client>) criteria.getExecutableCriteria(getSession()).setFirstResult(firstResult)
+          (List<Phones>) criteria.getExecutableCriteria(getSession()).setFirstResult(firstResult)
               .setMaxResults(maxResult).list();
     } finally {
       getSession().close();
@@ -103,10 +101,10 @@ public class ClientService implements IClientService {
     }
 
     try {
-      Client cl = findByID(id);
-      if (cl != null) {
+      Phones phones = findByID(id);
+      if (phones != null) {
         getSession().beginTransaction();
-        getSession().delete(cl);
+        getSession().delete(phones);
         getSession().getTransaction().commit();
       }
     } finally {
