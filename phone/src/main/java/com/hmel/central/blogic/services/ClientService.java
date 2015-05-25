@@ -72,9 +72,28 @@ public class ClientService implements IClientService {
   }
 
   @Override
-  public List<Client> findByCriteria(DetachedCriteria criteria, int from, int size)
+  public List<Client> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult)
       throws PhoneDictionaryException {
-    return null;
+    if (criteria == null) {
+      throw new IllegalArgumentException("criteria can't be null");
+    }
+    if (firstResult < 0) {
+      throw new IllegalArgumentException("firstResult can't be < 0");
+    }
+
+    if (maxResult < 0) {
+      throw new IllegalArgumentException("maxResults can't be < 0");
+    }
+    getSession().beginTransaction();
+    List<Client> res = new ArrayList<Client>();
+    try {
+      res =
+          (List<Client>) criteria.getExecutableCriteria(getSession()).setFirstResult(firstResult)
+              .setMaxResults(maxResult).list();
+    } finally {
+      getSession().close();
+    }
+    return res;
   }
 
   @Override
@@ -82,7 +101,7 @@ public class ClientService implements IClientService {
     if (id == 0) {
       throw new IllegalArgumentException("Id can't be 0");
     }
-    
+
     try {
       Client cl = findByID(id);
       if (cl != null) {

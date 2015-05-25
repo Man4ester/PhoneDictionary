@@ -15,7 +15,7 @@ public interface IClientService {
   
   public List<Client> findAll() throws PhoneDictionaryException;
   
-  public List<Client> findByCriteria(DetachedCriteria criteria, int from, int size) throws PhoneDictionaryException;
+  public List<Client> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult) throws PhoneDictionaryException;
   
   public void delete(int id) throws PhoneDictionaryException;
 
