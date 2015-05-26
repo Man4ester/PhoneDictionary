@@ -9,19 +9,17 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="client")
+@Table(name = "client")
 public class Client {
-  
+
   @Id
-  @Column(name="id")
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  
+
   private String firstName;
-  
+
   private String lastName;
-  
-  private Integer addressID;
 
   public int getId() {
     return id;
@@ -46,13 +44,4 @@ public class Client {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
-
-  public Integer getAddressID() {
-    return addressID;
-  }
-
-  public void setAddressID(Integer addressID) {
-    this.addressID = addressID;
-  }
-
 }

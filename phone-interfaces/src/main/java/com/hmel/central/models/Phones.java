@@ -20,12 +20,12 @@ public class Phones {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private Integer clientID;
+
   private String phone;
 
   @Enumerated(EnumType.STRING)
   private PhoneType phoneType;
-
-  private Integer clientID;
 
   private Date creationTime;
 
@@ -59,14 +59,6 @@ public class Phones {
     this.phoneType = phoneType;
   }
 
-  public Integer getClientID() {
-    return clientID;
-  }
-
-  public void setClientID(Integer clientID) {
-    this.clientID = clientID;
-  }
-
   public Date getCreationTime() {
     return creationTime;
   }
@@ -81,5 +73,13 @@ public class Phones {
 
   public void setModifiedTime(Date modifiedTime) {
     this.modifiedTime = modifiedTime;
+  }
+
+  public Integer getClientID() {
+    return clientID;
+  }
+
+  public void setClientID(Integer clientID) {
+    this.clientID = clientID;
   }
 }

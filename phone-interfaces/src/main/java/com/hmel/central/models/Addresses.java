@@ -16,11 +16,11 @@ public class Addresses {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private Integer clientID;
+
   private String address;
 
   private String city;
-
-  private Integer clientID;
 
   public int getId() {
     return id;
@@ -53,5 +53,4 @@ public class Addresses {
   public void setClientID(Integer clientID) {
     this.clientID = clientID;
   }
-
 }

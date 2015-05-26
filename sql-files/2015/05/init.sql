@@ -16,20 +16,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`phone_dictionary` /*!40100 DEFAULT CHAR
 
 USE `phone_dictionary`;
 
-/*Table structure for table `addresses` */
-
-DROP TABLE IF EXISTS `addresses`;
-
-CREATE TABLE `addresses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `clientID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `addresses` */
-
 /*Table structure for table `client` */
 
 DROP TABLE IF EXISTS `client`;
@@ -38,7 +24,6 @@ CREATE TABLE `client` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
-  `addressID` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -50,15 +35,29 @@ DROP TABLE IF EXISTS `phones`;
 
 CREATE TABLE `phones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `clientID` int(11) DEFAULT NULL,
   `phone` varchar(20) NOT NULL,
   `phoneType` enum('HOME','WORK') DEFAULT NULL,
-  `clientID` int(11) NOT NULL,
   `creationTime` datetime DEFAULT NULL,
   `modifiedTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `phones` */
+
+/*Table structure for table `addresses` */
+
+DROP TABLE IF EXISTS `addresses`;
+
+CREATE TABLE `addresses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `clientID` int(11) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `addresses` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
