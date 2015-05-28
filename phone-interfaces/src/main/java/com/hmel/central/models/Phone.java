@@ -12,15 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "phones")
-public class Phones {
+@Table(name = "phone")
+public class Phone {
 
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  private Integer clientID;
+  private int clientId;
 
   private String phone;
 
@@ -30,6 +30,12 @@ public class Phones {
   private Date creationTime;
 
   private Date modifiedTime;
+
+  public Phone() {}
+
+  public Phone(String phone) {
+    this.phone = phone;
+  }
 
   public enum PhoneType {
     HOME, WORK
@@ -75,11 +81,11 @@ public class Phones {
     this.modifiedTime = modifiedTime;
   }
 
-  public Integer getClientID() {
-    return clientID;
+  public int getClientId() {
+    return clientId;
   }
 
-  public void setClientID(Integer clientID) {
-    this.clientID = clientID;
+  public void setClientId(int clientId) {
+    this.clientId = clientId;
   }
 }

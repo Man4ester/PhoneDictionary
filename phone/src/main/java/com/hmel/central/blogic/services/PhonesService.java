@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 
 import com.hmel.central.blogic.interfaces.IPhonesService;
-import com.hmel.central.models.Phones;
+import com.hmel.central.models.Phone;
 import com.hmel.central.utils.HibernateUtils;
 import com.hmel.exception.PhoneDictionaryException;
 
@@ -18,7 +18,7 @@ public class PhonesService implements IPhonesService {
   private SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
 
   @Override
-  public Phones saveUpdate(Phones phones) throws PhoneDictionaryException {
+  public Phone saveUpdate(Phone phones) throws PhoneDictionaryException {
     if (phones == null) {
       throw new IllegalArgumentException("Phones can't be NULL for saving");
     }
@@ -37,14 +37,14 @@ public class PhonesService implements IPhonesService {
   }
 
   @Override
-  public Phones findByID(int id) throws PhoneDictionaryException {
+  public Phone findByID(int id) throws PhoneDictionaryException {
     if (id == 0) {
       throw new IllegalArgumentException("ID can't be 0");
     }
-    Phones phones = null;
+    Phone phones = null;
     getSession().beginTransaction();
     try {
-      phones = (Phones) getSession().get(Phones.class, id);
+      phones = (Phone) getSession().get(Phone.class, id);
     } finally {
       getSession().close();
     }
@@ -56,10 +56,10 @@ public class PhonesService implements IPhonesService {
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<Phones> findAll() throws PhoneDictionaryException {
+  public List<Phone> findAll() throws PhoneDictionaryException {
     String sql = "SELECT p FROM Phones p";
     getSession().beginTransaction();
-    List<Phones> res = new ArrayList<Phones>();
+    List<Phone> res = new ArrayList<Phone>();
     try {
       Query query = getSession().createQuery(sql);
       res = query.list();
@@ -70,7 +70,7 @@ public class PhonesService implements IPhonesService {
   }
 
   @Override
-  public List<Phones> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult)
+  public List<Phone> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult)
       throws PhoneDictionaryException {
     if (criteria == null) {
       throw new IllegalArgumentException("criteria can't be null");
@@ -83,10 +83,10 @@ public class PhonesService implements IPhonesService {
       throw new IllegalArgumentException("maxResults can't be < 0");
     }
     getSession().beginTransaction();
-    List<Phones> res = new ArrayList<Phones>();
+    List<Phone> res = new ArrayList<Phone>();
     try {
       res =
-          (List<Phones>) criteria.getExecutableCriteria(getSession()).setFirstResult(firstResult)
+          (List<Phone>) criteria.getExecutableCriteria(getSession()).setFirstResult(firstResult)
               .setMaxResults(maxResult).list();
     } finally {
       getSession().close();
@@ -101,7 +101,7 @@ public class PhonesService implements IPhonesService {
     }
 
     try {
-      Phones phones = findByID(id);
+      Phone phones = findByID(id);
       if (phones != null) {
         getSession().beginTransaction();
         getSession().delete(phones);

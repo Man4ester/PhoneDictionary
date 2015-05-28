@@ -8,17 +8,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 
-import com.hmel.central.blogic.interfaces.IAddressesService;
-import com.hmel.central.models.Addresses;
+import com.hmel.central.blogic.interfaces.IAddressService;
+import com.hmel.central.models.Address;
 import com.hmel.central.utils.HibernateUtils;
 import com.hmel.exception.PhoneDictionaryException;
 
-public class AddressesService implements IAddressesService {
+public class AddressService implements IAddressService {
 
   private SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
 
   @Override
-  public Addresses saveUpdate(Addresses addresses) throws PhoneDictionaryException {
+  public Address saveUpdate(Address addresses) throws PhoneDictionaryException {
     if (addresses == null) {
       throw new IllegalArgumentException("Addresses can't be NULL for saving");
     }
@@ -37,14 +37,14 @@ public class AddressesService implements IAddressesService {
   }
 
   @Override
-  public Addresses findByID(int id) throws PhoneDictionaryException {
+  public Address findByID(int id) throws PhoneDictionaryException {
     if (id == 0) {
       throw new IllegalArgumentException("ID can't be 0");
     }
-    Addresses addresses = null;
+    Address addresses = null;
     getSession().beginTransaction();
     try {
-      addresses = (Addresses) getSession().get(Addresses.class, id);
+      addresses = (Address) getSession().get(Address.class, id);
     } finally {
       getSession().close();
     }
@@ -56,10 +56,10 @@ public class AddressesService implements IAddressesService {
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<Addresses> findAll() throws PhoneDictionaryException {
+  public List<Address> findAll() throws PhoneDictionaryException {
     String sql = "SELECT a FROM Addresses a";
     getSession().beginTransaction();
-    List<Addresses> res = new ArrayList<Addresses>();
+    List<Address> res = new ArrayList<Address>();
     try {
       Query query = getSession().createQuery(sql);
       res = query.list();
@@ -70,7 +70,7 @@ public class AddressesService implements IAddressesService {
   }
 
   @Override
-  public List<Addresses> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult)
+  public List<Address> findByCriteria(DetachedCriteria criteria, int firstResult, int maxResult)
       throws PhoneDictionaryException {
     if (criteria == null) {
       throw new IllegalArgumentException("criteria can't be null");
@@ -83,10 +83,10 @@ public class AddressesService implements IAddressesService {
       throw new IllegalArgumentException("maxResults can't be < 0");
     }
     getSession().beginTransaction();
-    List<Addresses> res = new ArrayList<Addresses>();
+    List<Address> res = new ArrayList<Address>();
     try {
       res =
-          (List<Addresses>) criteria.getExecutableCriteria(getSession())
+          (List<Address>) criteria.getExecutableCriteria(getSession())
               .setFirstResult(firstResult).setMaxResults(maxResult).list();
     } finally {
       getSession().close();
@@ -101,7 +101,7 @@ public class AddressesService implements IAddressesService {
     }
 
     try {
-      Addresses addresses = findByID(id);
+      Address addresses = findByID(id);
       if (addresses != null) {
         getSession().beginTransaction();
         getSession().delete(addresses);

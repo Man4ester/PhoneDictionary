@@ -24,18 +24,30 @@ CREATE TABLE `client` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
+  `addressId` int(11) DEFAULT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `client` */
 
+/*Table structure for table `addresses` */
+
+DROP TABLE IF EXISTS `address`;
+
+CREATE TABLE `address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*Table structure for table `phones` */
 
-DROP TABLE IF EXISTS `phones`;
+DROP TABLE IF EXISTS `phone`;
 
-CREATE TABLE `phones` (
+CREATE TABLE `phone` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `clientID` int(11) DEFAULT NULL,
+  `clientId` int(11) NULL DEFAULT NULL,
   `phone` varchar(20) NOT NULL,
   `phoneType` enum('HOME','WORK') DEFAULT NULL,
   `creationTime` datetime DEFAULT NULL,
@@ -45,17 +57,7 @@ CREATE TABLE `phones` (
 
 /*Data for the table `phones` */
 
-/*Table structure for table `addresses` */
 
-DROP TABLE IF EXISTS `addresses`;
-
-CREATE TABLE `addresses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `clientID` int(11) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `addresses` */
 

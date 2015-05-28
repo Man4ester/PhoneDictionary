@@ -1,24 +1,31 @@
 package com.hmel;
 
-import com.hmel.central.blogic.interfaces.IAddressesService;
-import com.hmel.central.blogic.services.AddressesService;
-import com.hmel.central.models.Addresses;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.hmel.central.blogic.interfaces.IClientService;
+import com.hmel.central.blogic.services.ClientService;
+import com.hmel.central.models.Address;
+import com.hmel.central.models.Client;
+import com.hmel.central.models.Phone;
 import com.hmel.exception.PhoneDictionaryException;
 
 
 public class Main {
   public static void main(String[] args) {
-    System.out.println("Hello world guys hello");
 
-    Addresses addresses = new Addresses();
-    addresses.setCity("Chmeln");
-    addresses.setClientID(4);
+    Address address = new Address("Kyiv", "");
 
-    IAddressesService addressesService = new AddressesService();
+    List<Phone> phones = new ArrayList<Phone>();
+    phones.add(new Phone("0977776080"));
+    phones.add(new Phone("0977776081"));
+
+    Client client = new Client("Ivanov", "Ivan", address, phones);
+
+    IClientService clientService = new ClientService();
     try {
-      addressesService.saveUpdate(addresses);
+      clientService.saveUpdate(client);
     } catch (PhoneDictionaryException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
