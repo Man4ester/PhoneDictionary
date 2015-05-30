@@ -58,7 +58,7 @@ configurations {
 }
 dependencies {
     	driver "mysql:mysql-connector-java:5.1.18"
-	compile ("org.springframework:spring-web:4.0.3.RELEASE")
+	compile "org.springframework:spring-web:4.0.3.RELEASE"
 }
 
 
