@@ -17,6 +17,7 @@
 		<property name="hibernate.connection.password">1111</property>
 
 		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.show_sql">true</property>
 		
 		
 		<mapping class="com.hmel.central.models.Client" />

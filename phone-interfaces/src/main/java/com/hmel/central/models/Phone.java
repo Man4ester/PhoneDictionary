@@ -6,9 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +23,6 @@ public class Phone {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  private int clientId;
-
   private String phone;
 
   @Enumerated(EnumType.STRING)
@@ -30,6 +31,10 @@ public class Phone {
   private Date creationTime;
 
   private Date modifiedTime;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "clientId", nullable = false)
+  private Client client;
 
   public Phone() {}
 
@@ -81,11 +86,11 @@ public class Phone {
     this.modifiedTime = modifiedTime;
   }
 
-  public int getClientId() {
-    return clientId;
+  public Client getClient() {
+    return client;
   }
 
-  public void setClientId(int clientId) {
-    this.clientId = clientId;
+  public void setClient(Client client) {
+    this.client = client;
   }
 }
