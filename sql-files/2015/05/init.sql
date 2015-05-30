@@ -1,22 +1,8 @@
-/*
-SQLyog Ultimate v10.42 
-MySQL - 5.1.71-community-log : Database - phone_dictionary
-*********************************************************************
-*/
-
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`phone_dictionary` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE IF NOT EXISTS `phone_dictionary` DEFAULT CHARACTER SET utf8;
 
 USE `phone_dictionary`;
 
-/*Table structure for table `client` */
+#Table structure for table `client`
 
 DROP TABLE IF EXISTS `client`;
 
@@ -28,9 +14,8 @@ CREATE TABLE `client` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `client` */
 
-/*Table structure for table `addresses` */
+#Data for the table `client`
 
 DROP TABLE IF EXISTS `address`;
 
@@ -41,7 +26,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Table structure for table `phones` */
+#Table structure for table `phone`
 
 DROP TABLE IF EXISTS `phone`;
 
@@ -55,13 +40,7 @@ CREATE TABLE `phone` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `phones` */
+#Data for the table `phones`
 
+#koropatvaua@gmail.com
 
-
-/*Data for the table `addresses` */
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -7,6 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.hmel.central.blogic.interfaces.IClientService;
@@ -18,9 +20,12 @@ import com.hmel.exception.PhoneDictionaryException;
 public class ClientService implements IClientService {
 
   private SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
+  
+  private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
 
   @Override
   public Client saveUpdate(Client client) throws PhoneDictionaryException {
+    logger.debug("saveUpdate");
     if (client == null) {
       throw new IllegalArgumentException("Client can't be NULL for saving");
     }
