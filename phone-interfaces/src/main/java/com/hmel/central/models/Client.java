@@ -1,6 +1,7 @@
 package com.hmel.central.models;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,19 +28,21 @@ public class Client {
 
   private String lastName;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "addressId")
-  private Address address;
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @JoinColumn(name = "addressClientId")
+  private Set<Address> addresses = new HashSet<Address>();
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
-  private List<Phone> phones;
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "phoneClientId")
+  private Set<Phone> phones = new HashSet<Phone>();
 
   public Client() {}
 
-  public Client(String firstName, String lastName, Address address) {
+  public Client(String firstName, String lastName, Set<Address> addresses, Set<Phone> phones) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.setAddress(address);
+    this.addresses = addresses;
+    this.setPhones(phones);
   }
 
   public int getId() {
@@ -67,19 +69,19 @@ public class Client {
     this.lastName = lastName;
   }
 
-  public Address getAddress() {
-    return address;
+  public Set<Address> getAdresses() {
+    return addresses;
   }
 
-  public void setAddress(Address address) {
-    this.address = address;
+  public void setAdresses(Set<Address> adresses) {
+    this.addresses = adresses;
   }
 
-  public List<Phone> getPhones() {
+  public Set<Phone> getPhones() {
     return phones;
   }
 
-  public void setPhones(List<Phone> phones) {
+  public void setPhones(Set<Phone> phones) {
     this.phones = phones;
   }
 }
