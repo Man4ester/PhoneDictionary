@@ -20,7 +20,7 @@ import com.hmel.exception.PhoneDictionaryException;
 public class ClientService implements IClientService {
 
   private SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
-  
+
   private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
 
   @Override
