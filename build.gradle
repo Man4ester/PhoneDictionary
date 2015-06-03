@@ -25,7 +25,7 @@ def getSqlFile(def email) {
 }
 
 def update() {
-        def sql = Sql.newInstance("jdbc:mysql://localhost:3306/", "root", "", "com.mysql.jdbc.Driver")
+        def sql = Sql.newInstance("jdbc:mysql://localhost:3306/", "root", "1111", "com.mysql.jdbc.Driver")
         def email = ""
 	"git config --local user.email".execute().text.eachLine() { email += it}
         def sqlComment = "#"

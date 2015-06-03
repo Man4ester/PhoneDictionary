@@ -2,6 +2,7 @@ package com.hmel.central.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -32,8 +33,8 @@ public class Phone {
 
   private Date modifiedTime;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "clientId", nullable = false)
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "clientId")
   private Client client;
 
   public Phone() {}

@@ -1,27 +1,33 @@
 package com.hmel.central;
 
-import java.util.List;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.hmel.central.blogic.interfaces.IClientService;
-import com.hmel.central.blogic.services.ClientService;
 import com.hmel.central.models.Client;
 import com.hmel.exception.PhoneDictionaryException;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:spring.xml" })
 public class CRUDIntegrationTest {
 
+	@Autowired
+	private IClientService service;
+
+	@Test
 	public void test() {
-		IClientService service = new ClientService();
-		Client cl = new Client();
-		cl.setFirstName("Burkovskiy");
 		try {
-			Client cls = service.findByID(2);
-			List<Client> lst = service.findAll();
-			System.out.println(lst.size());
-			service.delete(3);
+			Client cl = new Client();
+			cl.setFirstName("Burkovskiy");
+
+			Client cls = service.saveUpdate(cl);
+			service.delete(cls.getId());
 		} catch (PhoneDictionaryException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Stop");
 	}
 
 }

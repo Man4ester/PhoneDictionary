@@ -19,7 +19,9 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
+                <value>com.hmel.central.models.Address</value>
                 <value>com.hmel.central.models.Client</value>
+                <value>com.hmel.central.models.Phone</value>
             </list>
         </property>
         <property name="hibernateProperties">

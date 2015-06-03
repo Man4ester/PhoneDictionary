@@ -1,10 +1,14 @@
 package com.hmel.central.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +23,10 @@ public class Address {
   private String address;
 
   private String city;
+
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "clientId")
+  private Client client;
 
   public Address() {}
 
@@ -50,4 +58,13 @@ public class Address {
   public void setCity(String city) {
     this.city = city;
   }
+
+  public Client getClient() {
+    return client;
+  }
+
+  public void setClient(Client client) {
+    this.client = client;
+  }
+
 }
