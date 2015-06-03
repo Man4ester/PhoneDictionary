@@ -10,21 +10,22 @@ jar {
 }
 
 repositories {
-	mavenLocal()
 	mavenCentral()
 }
 
 dependencies {
-	compile ("org.springframework:spring-web:4.1.6.RELEASE")
-	compile ("org.springframework:spring-orm:4.1.6.RELEASE")
-	runtime ("org.hibernate:hibernate-core:4.3.10.Final")
-	compile ('commons-dbcp:commons-dbcp:1.4')
-	compile("mysql:mysql-connector-java:5.1.16")
-	compile("org.slf4j:slf4j-api:1.7.12")
-	compile("org.apache.logging.log4j:log4j-slf4j-impl:2.0")
-	compile("org.apache.logging.log4j:log4j-api:2.3")
-	compile("org.apache.logging.log4j:log4j-core:2.3")
-	
+	compile "org.springframework:spring-web:4.1.6.RELEASE"
+	compile "org.springframework:spring-orm:4.1.6.RELEASE"
+	compile "org.hibernate:hibernate-core:4.3.10.Final"
+	compile "commons-dbcp:commons-dbcp:1.4"
+	compile "mysql:mysql-connector-java:5.1.16"
+	compile "org.slf4j:slf4j-api:1.7.12"
+	compile "org.apache.logging.log4j:log4j-slf4j-impl:2.0"
+	compile "org.apache.logging.log4j:log4j-api:2.3"
+	compile "org.apache.logging.log4j:log4j-core:2.3"
+
+	testCompile "junit:junit:4.12"		
+
 	compile project (":phone-interfaces")
 }
 
