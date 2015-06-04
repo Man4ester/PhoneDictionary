@@ -36,4 +36,12 @@
     <bean id="clientService" class="com.hmel.central.blogic.services.ClientService">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
+    
+    <bean id="phoneService" class="com.hmel.central.blogic.services.PhoneService">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
+    <bean id="addressService" class="com.hmel.central.blogic.services.AddressService">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
 </beans>

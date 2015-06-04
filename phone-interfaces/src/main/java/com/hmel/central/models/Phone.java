@@ -19,80 +19,84 @@ import javax.persistence.Table;
 @Table(name = "phone")
 public class Phone {
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+  @Id
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-	private String phone;
+  private String phone;
 
-	@Enumerated(EnumType.STRING)
-	private PhoneType phoneType;
+  @Enumerated(EnumType.STRING)
+  private PhoneType phoneType;
 
-	private Date creationTime;
+  private Date creationTime;
 
-	private Date modifiedTime;
+  private Date modifiedTime;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "clientId")
-	private Client client;
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "clientId")
+  private Client client;
 
-	public Phone() {
-	}
+  public Phone() {}
 
-	public Phone(String phone) {
-		this.phone = phone;
-	}
+  public Phone(String phone) {
+    this(phone, PhoneType.HOME);
+  }
 
-	public enum PhoneType {
-		HOME, WORK
-	}
+  public Phone(String phone, PhoneType phoneType) {
+    this.phone = phone;
+    this.phoneType = phoneType;
+  }
 
-	public int getId() {
-		return id;
-	}
+  public enum PhoneType {
+    HOME, WORK
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public String getPhone() {
-		return phone;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+  public String getPhone() {
+    return phone;
+  }
 
-	public PhoneType getPhoneType() {
-		return phoneType;
-	}
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
-	public void setPhoneType(PhoneType phoneType) {
-		this.phoneType = phoneType;
-	}
+  public PhoneType getPhoneType() {
+    return phoneType;
+  }
 
-	public Date getCreationTime() {
-		return creationTime;
-	}
+  public void setPhoneType(PhoneType phoneType) {
+    this.phoneType = phoneType;
+  }
 
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
+  public Date getCreationTime() {
+    return creationTime;
+  }
 
-	public Date getModifiedTime() {
-		return modifiedTime;
-	}
+  public void setCreationTime(Date creationTime) {
+    this.creationTime = creationTime;
+  }
 
-	public void setModifiedTime(Date modifiedTime) {
-		this.modifiedTime = modifiedTime;
-	}
+  public Date getModifiedTime() {
+    return modifiedTime;
+  }
 
-	public Client getClient() {
-		return client;
-	}
+  public void setModifiedTime(Date modifiedTime) {
+    this.modifiedTime = modifiedTime;
+  }
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
+  public Client getClient() {
+    return client;
+  }
+
+  public void setClient(Client client) {
+    this.client = client;
+  }
 }

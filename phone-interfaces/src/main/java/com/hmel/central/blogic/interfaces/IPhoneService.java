@@ -7,7 +7,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import com.hmel.central.models.Phone;
 import com.hmel.exception.PhoneDictionaryException;
 
-public interface IPhonesService {
+public interface IPhoneService {
 
   public Phone saveUpdate(Phone phones) throws PhoneDictionaryException;
 

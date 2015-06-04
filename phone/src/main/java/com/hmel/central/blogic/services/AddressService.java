@@ -7,15 +7,28 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import com.hmel.central.blogic.interfaces.IAddressService;
 import com.hmel.central.models.Address;
-import com.hmel.central.utils.HibernateUtils;
 import com.hmel.exception.PhoneDictionaryException;
 
+@Service
 public class AddressService implements IAddressService {
 
-  private SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
+  private SessionFactory sessionFactory;
+
+  private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
+
+  public SessionFactory getSessionFactory() {
+    return sessionFactory;
+  }
+
+  public void setSessionFactory(SessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
+  }
 
   @Override
   public Address saveUpdate(Address addresses) throws PhoneDictionaryException {
@@ -86,8 +99,8 @@ public class AddressService implements IAddressService {
     List<Address> res = new ArrayList<Address>();
     try {
       res =
-          (List<Address>) criteria.getExecutableCriteria(getSession())
-              .setFirstResult(firstResult).setMaxResults(maxResult).list();
+          (List<Address>) criteria.getExecutableCriteria(getSession()).setFirstResult(firstResult)
+              .setMaxResults(maxResult).list();
     } finally {
       getSession().close();
     }
