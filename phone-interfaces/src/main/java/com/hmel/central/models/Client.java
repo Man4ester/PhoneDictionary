@@ -14,74 +14,75 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "client")
 public class Client {
 
-  @Id
-  @Column(name = "id")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-  private String firstName;
+	private String firstName;
 
-  private String lastName;
+	private String lastName;
 
-  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-  @JoinColumn(name = "clientId")
-  private Set<Address> addresses = new HashSet<Address>();
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinColumn(name = "clientId")
+	private Set<Address> addresses = new HashSet<Address>();
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JoinColumn(name = "clientId")
-  private Set<Phone> phones = new HashSet<Phone>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "clientId")
+	private Set<Phone> phones = new HashSet<Phone>();
 
-  public Client() {}
+	public Client() {
+	}
 
-  public Client(String firstName, String lastName, Set<Address> addresses, Set<Phone> phones) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.addresses = addresses;
-    this.setPhones(phones);
-  }
+	public Client(String firstName, String lastName, Set<Address> addresses,
+			Set<Phone> phones) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.addresses = addresses;
+		this.setPhones(phones);
+	}
 
-  public int getId() {
-    return id;
-  }
+	public int getId() {
+		return id;
+	}
 
-  public void setId(int id) {
-    this.id = id;
-  }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-  public String getFirstName() {
-    return firstName;
-  }
+	public String getFirstName() {
+		return firstName;
+	}
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-  public String getLastName() {
-    return lastName;
-  }
+	public String getLastName() {
+		return lastName;
+	}
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-  public Set<Address> getAdresses() {
-    return addresses;
-  }
+	public Set<Address> getAdresses() {
+		return addresses;
+	}
 
-  public void setAdresses(Set<Address> adresses) {
-    this.addresses = adresses;
-  }
+	public void setAdresses(Set<Address> adresses) {
+		this.addresses = adresses;
+	}
 
-  public Set<Phone> getPhones() {
-    return phones;
-  }
+	public Set<Phone> getPhones() {
+		return phones;
+	}
 
-  public void setPhones(Set<Phone> phones) {
-    this.phones = phones;
-  }
+	public void setPhones(Set<Phone> phones) {
+		this.phones = phones;
+	}
 }

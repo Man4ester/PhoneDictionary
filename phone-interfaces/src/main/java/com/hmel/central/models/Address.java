@@ -15,56 +15,57 @@ import javax.persistence.Table;
 @Table(name = "address")
 public class Address {
 
-  @Id
-  @Column(name = "id")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-  private String address;
+	private String address;
 
-  private String city;
+	private String city;
 
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JoinColumn(name = "clientId")
-  private Client client;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "clientId")
+	private Client client;
 
-  public Address() {}
+	public Address() {
+	}
 
-  public Address(String city, String address) {
-    this.city = city;
-    this.address = address;
-  }
+	public Address(String city, String address) {
+		this.city = city;
+		this.address = address;
+	}
 
-  public int getId() {
-    return id;
-  }
+	public int getId() {
+		return id;
+	}
 
-  public void setId(int id) {
-    this.id = id;
-  }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-  public String getAddress() {
-    return address;
-  }
+	public String getAddress() {
+		return address;
+	}
 
-  public void setAddress(String address) {
-    this.address = address;
-  }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-  public String getCity() {
-    return city;
-  }
+	public String getCity() {
+		return city;
+	}
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-  public Client getClient() {
-    return client;
-  }
+	public Client getClient() {
+		return client;
+	}
 
-  public void setClient(Client client) {
-    this.client = client;
-  }
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 }
