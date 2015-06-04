@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hmel.dao.blogic.interfaces.IHibernateDAO;
 import com.hmel.exception.PhoneDictionaryException;
 
-@Transactional(value="transactionManager")
+@Transactional(value = "transactionManager")
 public class AbstractHibernateDAO<T extends Serializable, P extends Serializable> implements
     IHibernateDAO<T, P> {
 
@@ -34,39 +34,78 @@ public class AbstractHibernateDAO<T extends Serializable, P extends Serializable
 
   @SuppressWarnings("unchecked")
   public T findOne(P id) throws PhoneDictionaryException {
-    return (T) getCurrentSession().get(clazz, id);
+    getCurrentSession().beginTransaction();
+    try {
+      return (T) getCurrentSession().get(clazz, id);
+    } finally {
+      getCurrentSession().close();
+    }
+
   }
 
   @SuppressWarnings("unchecked")
   public List<T> findAll() throws PhoneDictionaryException {
-    //getCurrentSession().beginTransaction();
-    return getCurrentSession().createQuery("from " + clazz.getName()).list();
+    getCurrentSession().beginTransaction();
+    try {
+      return getCurrentSession().createQuery("from " + clazz.getName()).list();
+    } finally {
+      getCurrentSession().close();
+    }
   }
 
   public T create(T entity) throws PhoneDictionaryException {
-    getCurrentSession().persist(entity);
+    getCurrentSession().beginTransaction();
+    try {
+      getCurrentSession().persist(entity);
+      getCurrentSession().getTransaction().commit();
+    }
+
+    finally {
+      getCurrentSession().close();
+    }
     return entity;
   }
 
   public T update(T entity) throws PhoneDictionaryException {
-    getCurrentSession().merge(entity);
+    getCurrentSession().beginTransaction();
+    try {
+      getCurrentSession().merge(entity);
+      getCurrentSession().getTransaction().commit();
+    }
+
+    finally {
+      getCurrentSession().close();
+    }
     return entity;
   }
 
   @Transactional(propagation = Propagation.REQUIRES_NEW)
   public T save(T entity) throws PhoneDictionaryException {
-    getCurrentSession().saveOrUpdate(entity);
+    getCurrentSession().beginTransaction();
+    try {
+      getCurrentSession().saveOrUpdate(entity);
+      getCurrentSession().getTransaction().commit();
+    } finally {
+      getCurrentSession().close();
+    }
     return entity;
   }
 
 
   public void delete(T entity) throws PhoneDictionaryException {
-    getCurrentSession().delete(entity);
+    getCurrentSession().beginTransaction();
+    try {
+      getCurrentSession().delete(entity);
+      getCurrentSession().getTransaction().commit();
+    } finally {
+      getCurrentSession().close();
+    }
   }
 
   public void deleteById(P entityId) throws PhoneDictionaryException {
     T entity = findOne(entityId);
     delete(entity);
+
   }
 
   /**

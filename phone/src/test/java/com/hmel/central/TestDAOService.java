@@ -5,7 +5,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
 
 import com.hmel.central.blogic.interfaces.IDAOClientService;
 import com.hmel.central.models.Client;
@@ -21,8 +20,7 @@ public class TestDAOService {
     IDAOClientService service = (IDAOClientService) context.getBean("DAOClientService");
     
     try {
-      List<Client> lst =  service.findAll();
-      logger.info("Size: "+lst.size());
+      service.deleteById(1);
     } catch (PhoneDictionaryException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
