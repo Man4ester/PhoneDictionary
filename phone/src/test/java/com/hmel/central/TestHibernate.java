@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import com.hmel.central.utils.HibernateUtils;
 
 public class TestHibernate {
-	
+
 	public static void main(String[] args) {
 		String str = "SELECT id FROM client";
 		SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
@@ -16,7 +16,7 @@ public class TestHibernate {
 		Query query = sessionFactory.getCurrentSession().createSQLQuery(str);
 		List<Integer> lst = query.list();
 		sessionFactory.getCurrentSession().close();
-		System.out.println("Size:"+lst.size());
+		System.out.println("Size:" + lst.size());
 	}
 
 }
