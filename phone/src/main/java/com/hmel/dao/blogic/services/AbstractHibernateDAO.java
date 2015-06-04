@@ -39,6 +39,7 @@ public class AbstractHibernateDAO<T extends Serializable, P extends Serializable
 
   @SuppressWarnings("unchecked")
   public List<T> findAll() throws PhoneDictionaryException {
+    //getCurrentSession().beginTransaction();
     return getCurrentSession().createQuery("from " + clazz.getName()).list();
   }
 

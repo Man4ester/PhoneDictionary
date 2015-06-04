@@ -14,12 +14,14 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:spring-configured />
+	<!-- <context:component-scan base-package="com.hmel.central.blogic.services" /> -->
+	<context:property-placeholder location='database.properties'/>	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1/phone_dictionary" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="driverClassName" value='${db.driverClassName}' />
+		<property name="url" value='${db.url}' />
+		<property name="username" value='${db.username}' />
+		<property name="password" value='${db.password}'/>
 	</bean>
 
 	<bean id="localSessionFactory"
