@@ -1,6 +1,7 @@
 apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'spring-boot'
 
 group = 'com.hmel'
 version = '0.0.1'
@@ -8,6 +9,7 @@ version = '0.0.1'
 jar {
 	baseName = 'phone'
 }
+
 
 repositories {
 	mavenLocal()
@@ -25,6 +27,15 @@ dependencies {
 	compile("org.apache.logging.log4j:log4j-slf4j-impl:2.0")
 	compile("org.apache.logging.log4j:log4j-api:2.3")
 	compile("org.apache.logging.log4j:log4j-core:2.3")
+	
+	compile("org.springframework.boot:spring-boot-starter-web"){
+		exclude module:"spring-boot-starter-tomcat"
+	}
+	compile("org.springframework.boot:spring-boot-starter-jetty")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	
+	compile("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+	testCompile("junit:junit")
 	
 	compile project (":phone-interfaces")
 }
