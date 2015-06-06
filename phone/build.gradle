@@ -41,9 +41,13 @@ dependencies {
 	
 	compile("org.springframework.boot:spring-boot-starter-web"){
 		exclude module:"spring-boot-starter-tomcat"
+		exclude module: "spring-boot-starter-logging"
+    	exclude module: "logback-classic"
 	}
 	compile("org.springframework.boot:spring-boot-starter-jetty")
-	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.springframework.boot:spring-boot-starter-actuator"){
+	  exclude module: "logback-classic"
+	}
 	
 	compile("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
 	testCompile("junit:junit")
