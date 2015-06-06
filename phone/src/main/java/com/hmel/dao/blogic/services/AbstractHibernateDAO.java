@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hmel.dao.blogic.interfaces.IHibernateDAO;
 import com.hmel.exception.PhoneDictionaryException;
 
+/**
+ * @author Burkovskiy Alexander
+ */
 @Transactional(value = "transactionManager")
 public class AbstractHibernateDAO<T extends Serializable, P extends Serializable> implements
     IHibernateDAO<T, P> {

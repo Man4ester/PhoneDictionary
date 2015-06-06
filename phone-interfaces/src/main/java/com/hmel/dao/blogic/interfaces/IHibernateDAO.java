@@ -7,6 +7,9 @@ import org.hibernate.criterion.DetachedCriteria;
 
 import com.hmel.exception.PhoneDictionaryException;
 
+/**
+ * @author Burkovskiy Alexander
+ */
 public interface IHibernateDAO<T extends Serializable, P extends Serializable> {
 
   public T findOne(P id) throws PhoneDictionaryException;
