@@ -16,11 +16,12 @@ public class TestDAOService {
 
   public static void main(String[] args) {
     logger.info("Start test");
-    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
     IDAOClientService service = (IDAOClientService) context.getBean("DAOClientService");
     
     try {
-      service.deleteById(1);
+      List<Client> lst = service.findAll();
+      System.out.println("stop");
     } catch (PhoneDictionaryException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
