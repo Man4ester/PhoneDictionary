@@ -7,18 +7,32 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import com.hmel.central.blogic.interfaces.IPhonesService;
+import com.hmel.central.blogic.interfaces.IPhoneService;
 import com.hmel.central.models.Phone;
-import com.hmel.central.utils.HibernateUtils;
 import com.hmel.exception.PhoneDictionaryException;
 
-public class PhonesService implements IPhonesService {
+@Service
+public class PhoneService implements IPhoneService {
 
-  private SessionFactory sessionFactory = HibernateUtils.getSessionfactory();
+  private SessionFactory sessionFactory;
+
+  private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
+
+  public SessionFactory getSessionFactory() {
+    return sessionFactory;
+  }
+
+  public void setSessionFactory(SessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
+  }
 
   @Override
   public Phone saveUpdate(Phone phones) throws PhoneDictionaryException {
+    logger.debug("saveUpdate phone");
     if (phones == null) {
       throw new IllegalArgumentException("Phones can't be NULL for saving");
     }
