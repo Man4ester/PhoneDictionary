@@ -58,4 +58,10 @@
 	<bean id="ClientService" class="com.hmel.central.blogic.services.ClientService">
 		<property name="sessionFactory" ref="localSessionFactory" />
 	</bean>
+	<bean id="AddressService" class="com.hmel.central.blogic.services.AddressService">
+		<property name="sessionFactory" ref="localSessionFactory" />
+	</bean>
+	<bean id="PhoneService" class="com.hmel.central.blogic.services.PhoneService">
+		<property name="sessionFactory" ref="localSessionFactory" />
+	</bean>
 </beans>
