@@ -22,7 +22,7 @@ public class AbstractHibernateDAO<T extends Serializable, P extends Serializable
   protected Class<T> clazz;
 
   @Autowired
-  @Qualifier("sessionFactory")
+  @Qualifier("localSessionFactory")
   protected SessionFactory sessionFactory;
 
   @SuppressWarnings("unchecked")

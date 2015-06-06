@@ -54,4 +54,8 @@
 	<bean id="DAOClientService" class="com.hmel.central.blogic.services.DAOClientService">
 		<property name="sessionFactory" ref="localSessionFactory" />
 	</bean>
+	
+	<bean id="ClientService" class="com.hmel.central.blogic.services.ClientService">
+		<property name="sessionFactory" ref="localSessionFactory" />
+	</bean>
 </beans>
