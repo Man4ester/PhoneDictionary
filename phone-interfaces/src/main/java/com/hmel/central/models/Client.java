@@ -1,5 +1,6 @@
 package com.hmel.central.models;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
-public class Client {
+public class Client implements Serializable{
+
+  private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")
