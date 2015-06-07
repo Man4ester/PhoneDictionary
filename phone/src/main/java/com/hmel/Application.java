@@ -5,11 +5,13 @@ import java.util.Arrays;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author Burkovskiy Alexander
  */
 
+@Configuration
 @SpringBootApplication
 public class Application {
   
