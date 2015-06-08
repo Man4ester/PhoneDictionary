@@ -9,6 +9,9 @@ import com.hmel.central.blogic.interfaces.IDAOClientService;
 import com.hmel.central.models.Client;
 import com.hmel.dao.blogic.services.AbstractHibernateDAO;
 
+/**
+ * @author Burkovskiy Alexander
+ */
 @Transactional(value="transactionManager")
 @Repository
 public class DAOClientService extends AbstractHibernateDAO<Client, Integer> implements IDAOClientService{

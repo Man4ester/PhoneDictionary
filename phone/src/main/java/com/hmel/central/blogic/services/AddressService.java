@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.hmel.central.blogic.interfaces.IAddressService;
@@ -18,6 +20,8 @@ import com.hmel.exception.PhoneDictionaryException;
 @Service
 public class AddressService implements IAddressService {
 
+  @Autowired
+  @Qualifier("localSessionFactory")
   private SessionFactory sessionFactory;
 
   private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
