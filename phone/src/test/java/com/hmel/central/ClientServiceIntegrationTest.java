@@ -13,37 +13,41 @@ import com.hmel.central.models.Client;
 import com.hmel.exception.PhoneDictionaryException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-context.xml"})
+@ContextConfiguration(locations = { "classpath:spring-context.xml" })
 public class ClientServiceIntegrationTest {
 
-  private static final String FIRST_NAME = "Burkovskiy";
-  private static final String LAST_NAME = "Alexander";
-  @Autowired
-  private IClientService iClientService;
+	private static final String FIRST_NAME = "Burkovskiy";
+	private static final String LAST_NAME = "Alexander";
+	@Autowired
+	private IClientService iClientService;
 
-  @Test
-  public void test() {
-    try {
-      Client client = new Client();
-      client.setFirstName(FIRST_NAME);
-      client.setLastName(LAST_NAME);
+	@Test
+	public void test() {
+		try {
+			Client client = new Client();
+			client.setFirstName(FIRST_NAME);
+			client.setLastName(LAST_NAME);
 
-      client = iClientService.saveUpdate(client);
+			client = iClientService.saveUpdate(client);
 
-      assertThat(client.getId()).isNotNull().describedAs("After saving id should be filled");
-      assertThat(client.getFirstName()).isEqualTo(FIRST_NAME).as(
-          "After saving first name should be the same as before insert");
+			assertThat(client.getId()).isNotNull().describedAs(
+					"After saving id should be filled");
+			assertThat(client.getFirstName())
+					.isEqualTo(FIRST_NAME)
+					.as("After saving first name should be the same as before insert");
 
-      Client client2 = iClientService.findByID(client.getId());
+			Client client2 = iClientService.findByID(client.getId());
 
-      assertThat(client2).isNotNull().as("After saving we should have the same order in the DB");
-      assertThat(client.getId()).isEqualTo(client2.getId()).as("Id's should be the same");
-      assertThat(client.getFirstName()).isEqualTo(client2.getFirstName()).as(
-          "The first name's should be equals");
+			assertThat(client2).isNotNull().as(
+					"After saving we should have the same order in the DB");
+			assertThat(client.getId()).isEqualTo(client2.getId()).as(
+					"Id's should be the same");
+			assertThat(client.getFirstName()).isEqualTo(client2.getFirstName())
+					.as("The first name's should be equals");
 
-    } catch (PhoneDictionaryException e) {
-      e.printStackTrace();
-    }
-  }
+		} catch (PhoneDictionaryException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
