@@ -1,8 +1,8 @@
 package com.hmel.central.models;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,75 +17,73 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
-public class Client implements Serializable{
+public class Client implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+  @Id
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-	private String firstName;
+  private String firstName;
 
-	private String lastName;
+  private String lastName;
 
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	@JoinColumn(name = "clientId")
-	private Set<Address> addresses = new HashSet<Address>();
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+  @JoinColumn(name = "clientId")
+  private List<Address> addresses = new ArrayList<Address>();
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "clientId")
-	private Set<Phone> phones = new HashSet<Phone>();
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+  @JoinColumn(name = "clientId")
+  private List<Phone> phones = new ArrayList<Phone>();
 
-	public Client() {
-	}
+  public Client() {}
 
-	public Client(String firstName, String lastName, Set<Address> addresses,
-			Set<Phone> phones) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.addresses = addresses;
-		this.setPhones(phones);
-	}
+  public Client(String firstName, String lastName, List<Address> addresses, List<Phone> phones) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.addresses = addresses;
+    this.setPhones(phones);
+  }
 
-	public int getId() {
-		return id;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public String getFirstName() {
-		return firstName;
-	}
+  public String getFirstName() {
+    return firstName;
+  }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-	public String getLastName() {
-		return lastName;
-	}
+  public String getLastName() {
+    return lastName;
+  }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-	public Set<Address> getAdresses() {
-		return addresses;
-	}
+  public List<Address> getAdresses() {
+    return addresses;
+  }
 
-	public void setAdresses(Set<Address> adresses) {
-		this.addresses = adresses;
-	}
+  public void setAdresses(List<Address> adresses) {
+    this.addresses = adresses;
+  }
 
-	public Set<Phone> getPhones() {
-		return phones;
-	}
+  public List<Phone> getPhones() {
+    return phones;
+  }
 
-	public void setPhones(Set<Phone> phones) {
-		this.phones = phones;
-	}
+  public void setPhones(List<Phone> phones) {
+    this.phones = phones;
+  }
 }

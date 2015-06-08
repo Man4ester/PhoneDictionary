@@ -11,7 +11,7 @@ public interface IClientService {
 
   public Client saveUpdate(Client client) throws PhoneDictionaryException;
 
-  public Client findByID(int id) throws PhoneDictionaryException;
+  public Client findByID(int id, boolean loadCollectionToken) throws PhoneDictionaryException;
 
   public List<Client> findAll() throws PhoneDictionaryException;
 
