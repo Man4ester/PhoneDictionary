@@ -9,7 +9,7 @@ def getSqlFile(def email) {
         def lst = []
         def dir = new File("sql-files/")
         dir.eachFileRecurse(FileType.FILES) {file ->
-                if(file.name.endsWith(".sql")){
+               if(file.name.endsWith(".sql")){
                         def flag = false
                         file.eachLine() { line ->
                                 if(line.toString().contains(email))
@@ -25,13 +25,13 @@ def getSqlFile(def email) {
 }
 
 def update() {
-        def sql = Sql.newInstance("jdbc:mysql://localhost:3306/", "root", "1111", "com.mysql.jdbc.Driver")
+        def sql = Sql.newInstance("jdbc:mysql://localhost:3306/", "root", "", "com.mysql.jdbc.Driver")
         def email = ""
 	"git config --local user.email".execute().text.eachLine() { email += it}
         def sqlComment = "#"
-        getSqlFile(email).each { sqlSyntax ->
+        getSqlFile(email).sort{it.name}.each { sqlSyntax ->
                 println "Running ${sqlSyntax} script..."
-		def query = ""
+		String query = ""
                 sqlSyntax.eachLine() { line ->
                         if(line?.trim() && !line.startsWith(sqlComment))
 				query += line.trim()
