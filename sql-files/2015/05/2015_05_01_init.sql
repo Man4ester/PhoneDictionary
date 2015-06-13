@@ -45,6 +45,3 @@ CREATE TABLE `phone` (
 #koropatvaua@gmail.com
 
 #byrkovskiy@gmail.com
-
-
-#koroaptvaua@gmail.com
