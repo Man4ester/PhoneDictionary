@@ -1,3 +1,16 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		maven {
+			url uri('libs')
+		}
+	}
+	dependencies {
+		classpath 'com.hmel:builder:0.1-SNAPSHOT'
+	}
+}
+apply plugin: 'builder'
+
 apply plugin: 'eclipse'
 apply plugin: 'java'
 
