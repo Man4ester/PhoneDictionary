@@ -42,9 +42,7 @@ CREATE TABLE `phone` (
 
 #Data for the table `phones`
 
-#koropatvaua@gmail.com
 
 #byrkovskiy@gmail.com
 
-
-#koroaptvaua@gmail.com
+#koropatvaua@gmail.com
