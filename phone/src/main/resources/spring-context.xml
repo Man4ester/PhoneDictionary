@@ -51,7 +51,14 @@
 	</bean>
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	
 	<bean id="DAOClientService" class="com.hmel.central.blogic.services.DAOClientService">
+		<property name="sessionFactory" ref="localSessionFactory" />
+	</bean>
+	<bean id="DAOAddressService" class="com.hmel.central.blogic.services.DAOAddressService">
+		<property name="sessionFactory" ref="localSessionFactory" />
+	</bean>
+	<bean id="DAOPhoneService" class="com.hmel.central.blogic.services.DAOPhoneService">
 		<property name="sessionFactory" ref="localSessionFactory" />
 	</bean>
 	
