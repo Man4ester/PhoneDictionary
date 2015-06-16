@@ -10,7 +10,6 @@ CREATE TABLE `client` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
-  `addressId` int(11) DEFAULT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21,6 +20,7 @@ DROP TABLE IF EXISTS `address`;
 
 CREATE TABLE `address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `clientId` int(11) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -41,7 +41,6 @@ CREATE TABLE `phone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #Data for the table `phones`
-
 
 #byrkovskiy@gmail.com
 

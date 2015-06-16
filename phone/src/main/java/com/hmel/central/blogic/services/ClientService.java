@@ -3,6 +3,7 @@ package com.hmel.central.blogic.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,8 +20,8 @@ import com.hmel.exception.PhoneDictionaryException;
 
 @Service
 public class ClientService implements IClientService {
+  private static final boolean loadCollectionToken = true;
 
-  
   @Autowired
   @Qualifier("localSessionFactory")
   private SessionFactory sessionFactory;
@@ -56,7 +57,7 @@ public class ClientService implements IClientService {
   }
 
   @Override
-  public Client findByID(int id) throws PhoneDictionaryException {
+  public Client findByID(int id, boolean loadCollectionToken) throws PhoneDictionaryException {
     if (id == 0) {
       throw new IllegalArgumentException("ID can't be 0");
     }
@@ -64,6 +65,10 @@ public class ClientService implements IClientService {
     getSession().beginTransaction();
     try {
       cl = (Client) getSession().get(Client.class, id);
+
+      if (loadCollectionToken)
+        cl = loadCollections(cl);
+
     } finally {
       getSession().close();
     }
@@ -71,6 +76,12 @@ public class ClientService implements IClientService {
       throw new NullPointerException("No client with Id: " + id);
     }
     return cl;
+  }
+
+  private Client loadCollections(Client client) {
+    Hibernate.initialize(client.getAdresses());
+    Hibernate.initialize(client.getPhones());
+    return client;
   }
 
   @SuppressWarnings("unchecked")
@@ -120,7 +131,7 @@ public class ClientService implements IClientService {
     }
 
     try {
-      Client cl = findByID(id);
+      Client cl = findByID(id, loadCollectionToken);
       if (cl != null) {
         getSession().beginTransaction();
         getSession().delete(cl);
