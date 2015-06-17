@@ -23,10 +23,9 @@ public class TestDAOClientService {
 
 	IDAOClientService service = (IDAOClientService) context
 		.getBean(NAME_DAO_CLIENT_SERVICE);
-
 	try {
 	    List<Client> lst = service.findAll();
-	    System.out.println("stop");
+	    logger.info("stop");
 	} catch (PhoneDictionaryException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
