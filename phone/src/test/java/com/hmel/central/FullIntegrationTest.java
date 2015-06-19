@@ -25,11 +25,11 @@ public class FullIntegrationTest {
     private static final String EXAMPLE_CITY = "Khmelnitsky";
     private static final String EXAMPLE_STREET_1 = "Proskurivska street, 156";
     private static final String EXAMPLE_STREET_2 = "Proskurivska street, 55";
-    private static final String EXAMPLE_PHONE_1 = "0970000000";
-    private static final String EXAMPLE_PHONE_2 = "0930000000";
-    private static final String EXAMPLE_PHONE_3 = "0990000000";
+    private static final String EXAMPLE_PHONE_1 = "0971111111";
+    private static final String EXAMPLE_PHONE_2 = "0932222222";
+    private static final String EXAMPLE_PHONE_3 = "0993333333";
 
-    private static final boolean loadCollectionToken = true;
+    private static final boolean loadCollectionToken = false;
 
     @Autowired
     private IClientService iClientService;
