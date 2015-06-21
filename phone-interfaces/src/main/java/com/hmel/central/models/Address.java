@@ -16,58 +16,60 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "address")
 public class Address implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  @Id
-  @Column(name = "id")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+    private static final long serialVersionUID = 1L;
 
-  private String address;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-  private String city;
+    private String address;
 
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JoinColumn(name = "clientId")
-  private Client client;
+    private String city;
 
-  public Address() {}
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "clientId")
+    private Client client;
 
-  public Address(String city, String address) {
-    this.city = city;
-    this.address = address;
-  }
+    public Address() {
+    }
 
-  public int getId() {
-    return id;
-  }
+    public Address(String city, String address) {
+	this.city = city;
+	this.address = address;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public int getId() {
+	return id;
+    }
 
-  public String getAddress() {
-    return address;
-  }
+    public void setId(int id) {
+	this.id = id;
+    }
 
-  public void setAddress(String address) {
-    this.address = address;
-  }
+    public String getAddress() {
+	return address;
+    }
 
-  public String getCity() {
-    return city;
-  }
+    public void setAddress(String address) {
+	this.address = address;
+    }
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+    public String getCity() {
+	return city;
+    }
 
-  public Client getClient() {
-    return client;
-  }
+    public void setCity(String city) {
+	this.city = city;
+    }
 
-  public void setClient(Client client) {
-    this.client = client;
-  }
+    public Client getClient() {
+	return client;
+    }
+
+    public void setClient(Client client) {
+	this.client = client;
+    }
 
 }

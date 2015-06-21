@@ -1,5 +1,6 @@
 package com.hmel.central.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,86 +18,89 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "phone")
-public class Phone {
+public class Phone implements Serializable {
 
-  @Id
-  @Column(name = "id")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+    private static final long serialVersionUID = 1L;
 
-  private String phone;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-  @Enumerated(EnumType.STRING)
-  private PhoneType phoneType;
+    private String phone;
 
-  private Date creationTime;
+    @Enumerated(EnumType.STRING)
+    private PhoneType phoneType;
 
-  private Date modifiedTime;
+    private Date creationTime;
 
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JoinColumn(name = "clientId")
-  private Client client;
+    private Date modifiedTime;
 
-  public Phone() {}
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "clientId")
+    private Client client;
 
-  public Phone(String phone) {
-    this(phone, PhoneType.HOME);
-  }
+    public Phone() {
+    }
 
-  public Phone(String phone, PhoneType phoneType) {
-    this.phone = phone;
-    this.phoneType = phoneType;
-  }
+    public Phone(String phone) {
+	this(phone, PhoneType.HOME);
+    }
 
-  public enum PhoneType {
-    HOME, WORK
-  }
+    public Phone(String phone, PhoneType phoneType) {
+	this.phone = phone;
+	this.phoneType = phoneType;
+    }
 
-  public int getId() {
-    return id;
-  }
+    public enum PhoneType {
+	HOME, WORK
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public int getId() {
+	return id;
+    }
 
-  public String getPhone() {
-    return phone;
-  }
+    public void setId(int id) {
+	this.id = id;
+    }
 
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
+    public String getPhone() {
+	return phone;
+    }
 
-  public PhoneType getPhoneType() {
-    return phoneType;
-  }
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
 
-  public void setPhoneType(PhoneType phoneType) {
-    this.phoneType = phoneType;
-  }
+    public PhoneType getPhoneType() {
+	return phoneType;
+    }
 
-  public Date getCreationTime() {
-    return creationTime;
-  }
+    public void setPhoneType(PhoneType phoneType) {
+	this.phoneType = phoneType;
+    }
 
-  public void setCreationTime(Date creationTime) {
-    this.creationTime = creationTime;
-  }
+    public Date getCreationTime() {
+	return creationTime;
+    }
 
-  public Date getModifiedTime() {
-    return modifiedTime;
-  }
+    public void setCreationTime(Date creationTime) {
+	this.creationTime = creationTime;
+    }
 
-  public void setModifiedTime(Date modifiedTime) {
-    this.modifiedTime = modifiedTime;
-  }
+    public Date getModifiedTime() {
+	return modifiedTime;
+    }
 
-  public Client getClient() {
-    return client;
-  }
+    public void setModifiedTime(Date modifiedTime) {
+	this.modifiedTime = modifiedTime;
+    }
 
-  public void setClient(Client client) {
-    this.client = client;
-  }
+    public Client getClient() {
+	return client;
+    }
+
+    public void setClient(Client client) {
+	this.client = client;
+    }
 }
